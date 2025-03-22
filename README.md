@@ -5,32 +5,99 @@
 As part of my mission to revolutionize the agriculture sector through innovative and sustainable practices, this project directly addresses one of the most overlooked aspects in organic farming: **precision composting**.
 
 By building a tool that predicts compost maturity based on environmental and chemical parameters, I aim to help farmers:
-- Apply compost at the **optimal time** for maximum soil health and crop yield,
-- **Reduce guesswork** and dependency on physical cues alone,
-- Adopt **data-driven practices** in organic waste recycling and soil management.
+- Apply compost at the **optimal time** for maximum soil health and crop yield
+- **Reduce guesswork** and dependency on physical cues alone
+- Adopt **data-driven practices** in organic waste recycling and soil management
 
 This aligns with my broader vision to **empower local farmers with accessible technology** that enhances productivity, supports sustainability, and contributes to a circular economy in agriculture.
 
 ---
 
-## 📌 Project Overview
+## 📊 About the Dataset
 
-This project provides an API that predicts **compost maturity** based on environmental and chemical parameters.  
-It includes a **Flutter mobile app** that interacts with the FastAPI backend to deliver real-time predictions.
+The dataset used in this project was sourced from:  
+📂 [Compost Dataset by Hafsa Kibria](https://github.com/hafsa-kibria/Compost-Datasetdataset)
+
+It contains various **chemical and physical properties** measured during composting, including:
+
+| Feature | Description |
+|--------|-------------|
+| `Day` | Number of days since composting started |
+| `Temperature` | Compost temperature (°C) |
+| `MC(%)` | Moisture content |
+| `pH` | Acidity level |
+| `C/N Ratio` | Carbon-to-Nitrogen ratio |
+| `Ammonia`, `Nitrate` | Nitrogen-based compounds (mg/kg) |
+| `TN(%)` | Total nitrogen |
+| `TOC(%)` | Total organic carbon |
+| `EC(ms/cm)` | Electrical conductivity |
+| `OM(%)` | Organic matter |
+| `T Value`, `GI(%)` | Germination Index and maturity indicators |
+| `Score` | Compost maturity score (target variable) |
+
+We trained a **linear regression model** on this data to predict the `Score`.
 
 ---
 
-## 🌍 Public API Endpoint
+## 🔧 How to Run This Project on Your Laptop
 
-**Swagger UI (for testing):**  
+### 🔹 1. Clone the Repository
+```bash
+git clone https://github.com/Annemarie535257/linear_regression_model.git
+cd linear_regression_model
 ```
-https://linear-regression-model-r0fj.onrender.com/docs
+
+### 🔹 2. Create and Activate a Virtual Environment
+```bash
+python -m venv envir
+envir\Scripts\activate  # On Windows
 ```
+
+### 🔹 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 🔹 4. Start the API
+```bash
+uvicorn summative.API.prediction:app --host 0.0.0.0 --port 8500
+```
+
+You should see the server running locally at:  
+`http://127.0.0.1:8500`
+
+You can access the Swagger UI for testing here:  
+`http://127.0.0.1:8500/docs`
 
 ---
 
-## 🔄 Sample Request Payload (POST `/predict/`)
+## 📱 How the Flutter Mobile App Works
+
+The Flutter app is a **user-friendly interface** that lets farmers and compost managers:
+- Enter current compost values (e.g. temperature, pH, moisture)
+- Click **"Predict"**
+- Instantly get a **maturity score** with an explanation
+
+### 🧠 Behind the Scenes:
+- The app sends the entered values to the FastAPI backend via **HTTP POST**.
+- The API processes the data and returns a predicted compost score.
+- The score is displayed with a message like:
+  - "Compost is still in early stages"
+  - "Ready for application to soil"
+
+---
+
+## 📡 How the API Works
+
+The FastAPI backend:
+- Loads the trained model (`best_model.pkl`)
+- Accepts POST requests at `/predict/` with compost values
+- Scales the input (if required)
+- Returns a JSON response with the **predicted maturity score**
+
+### Sample API Request:
 ```json
+POST /predict/
 {
   "day": 12,
   "temperature": 38.955,
@@ -48,77 +115,52 @@ https://linear-regression-model-r0fj.onrender.com/docs
 }
 ```
 
-✅ The prediction should return or be close to: **59.69828181**
+### Sample Response:
+```json
+{
+  "predicted_compost_maturity_score": 59.69
+}
+```
+
+Try it live:  
+**Swagger UI:**  
+```
+https://linear-regression-model-r0fj.onrender.com/docs
+```
 
 ---
 
 ## 🎥 YouTube Demo
 
-📺 **Watch the short 3-minute demo video of this project:**  
-[🔗 YouTube Link](https://your-youtube-demo-link.com)
-
----
-
-## 📱 How to Run the Flutter Mobile App
-
-### 1️⃣ Install Flutter SDK
-If not already installed, follow the [Flutter installation guide](https://docs.flutter.dev/get-started/install).
-
-Verify installation:
-```bash
-flutter doctor
-```
-
----
-
-### 2️⃣ Clone This Repository
-```bash
-git clone https://github.com/Annemarie535257/linear_regression_model.git
-cd linear_regression_model/flutter_app
-```
-
----
-
-### 3️⃣ Install Flutter Dependencies
-```bash
-flutter pub get
-```
-
----
-
-
-### 5️⃣ Run the App
-```bash
-flutter run
-```
-
-✅ You can also run on a specific device or emulator.
-
----
-
-## 🔐 Note on Dataset
-
-This project uses an open dataset from:  
-📂 https://github.com/hafsa-kibria/Compost-Datasetdataset  
-It has been preprocessed and refined to suit this prediction model.
+📺 Watch the short 3-minute video of how the API and mobile app work together:  
+[🔗 YouTube Demo](https://your-youtube-demo-link.com)
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Flutter** – Mobile UI
-- **FastAPI** – Backend API
-- **scikit-learn** – Model training
-- **pandas / numpy** – Data processing
-- **Swagger UI** – API documentation
+| Tool | Purpose |
+|------|---------|
+| **Flutter** | Mobile frontend |
+| **FastAPI** | Backend API |
+| **Uvicorn** | ASGI server |
+| **scikit-learn** | Machine learning model |
+| **pandas / numpy** | Data processing |
+| **Swagger UI** | API testing and documentation |
 
 ---
 
 ## 👩‍💻 Author
 
 **Anne Marie T.**  
-GitHub: [@Annemarie535257](https://github.com/Annemarie535257)  
-Email: _a.twagiraye@alustudent.com_
+🎓 Passionate about digital solutions in agriculture  
+📬 Email: a.twagiraye@alustudent.com  
+💻 GitHub: [@Annemarie535257](https://github.com/Annemarie535257)
 
 ---
+
+> Empowering sustainable farming through technology 🌍🌱🚜  
 ```
+
+---
+
