@@ -86,13 +86,6 @@ flutter pub get
 
 ---
 
-### 4️⃣ Update the API Endpoint in `main.dart`
-In your Flutter app, find:
-```dart
-final url = Uri.parse('http://10.0.2.2:8500/predict/');
-```
-
----
 
 ### 5️⃣ Run the App
 ```bash
