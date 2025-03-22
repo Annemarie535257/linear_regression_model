@@ -1,6 +1,20 @@
 # 🌱 Compost Maturity Predictor API & Mobile App
 
+## 🌾 How This Supports My Agricultural Mission
+
+As part of my mission to revolutionize the agriculture sector through innovative and sustainable practices, this project directly addresses one of the most overlooked aspects in organic farming: **precision composting**.
+
+By building a tool that predicts compost maturity based on environmental and chemical parameters, I aim to help farmers:
+- Apply compost at the **optimal time** for maximum soil health and crop yield,
+- **Reduce guesswork** and dependency on physical cues alone,
+- Adopt **data-driven practices** in organic waste recycling and soil management.
+
+This aligns with my broader vision to **empower local farmers with accessible technology** that enhances productivity, supports sustainability, and contributes to a circular economy in agriculture.
+
+---
+
 ## 📌 Project Overview
+
 This project provides an API that predicts **compost maturity** based on environmental and chemical parameters.  
 It includes a **Flutter mobile app** that interacts with the FastAPI backend to deliver real-time predictions.
 
@@ -10,7 +24,7 @@ It includes a **Flutter mobile app** that interacts with the FastAPI backend to 
 
 **Swagger UI (for testing):**  
 ```
-https://your-api-deployment-url.onrender.com/docs
+https://linear-regression-model-r0fj.onrender.com/docs
 ```
 
 ---
@@ -33,7 +47,9 @@ https://your-api-deployment-url.onrender.com/docs
   "gi": 79.4691
 }
 ```
-The prediction should or be close to 59.69828181
+
+✅ The prediction should return or be close to: **59.69828181**
+
 ---
 
 ## 🎥 YouTube Demo
@@ -75,10 +91,6 @@ In your Flutter app, find:
 ```dart
 final url = Uri.parse('http://10.0.2.2:8500/predict/');
 ```
-Replace with your public API URL:
-```dart
-final url = Uri.parse('https://your-api-deployment-url.onrender.com/predict/');
-```
 
 ---
 
@@ -91,11 +103,11 @@ flutter run
 
 ---
 
+## 🔐 Note on Dataset
 
-## 🔐 Note on Model and Dataset
-
-To keep the repository clean, large files like the model (`.pkl`) and dataset (`.csv`) are **not pushed to GitHub**.  
-Instead, they are automatically **downloaded at runtime using a script** (e.g. from Google Drive).
+This project uses an open dataset from:  
+📂 https://github.com/hafsa-kibria/Compost-Datasetdataset  
+It has been preprocessed and refined to suit this prediction model.
 
 ---
 
@@ -111,8 +123,9 @@ Instead, they are automatically **downloaded at runtime using a script** (e.g. f
 
 ## 👩‍💻 Author
 
-**Annemarie T.**  
+**Anne Marie T.**  
 GitHub: [@Annemarie535257](https://github.com/Annemarie535257)  
 Email: _a.twagiraye@alustudent.com_
 
 ---
+```
