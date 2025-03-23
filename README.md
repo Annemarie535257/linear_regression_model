@@ -161,6 +161,3 @@ https://linear-regression-model-r0fj.onrender.com/docs
 
 > Empowering sustainable farming through technology 🌍🌱🚜  
 ```
-
----
-
