@@ -133,7 +133,7 @@ https://linear-regression-model-r0fj.onrender.com/docs
 ## 🎥 YouTube Demo
 
 📺 Watch the short 3-minute video of how the API and mobile app work together:  
-[🔗 YouTube Demo](https://your-youtube-demo-link.com)
+[🔗 YouTube Demo]([https://your-youtube-demo-link.com](https://youtu.be/EseDDkZuox0))
 
 ---
 
